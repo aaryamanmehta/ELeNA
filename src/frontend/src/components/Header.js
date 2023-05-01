@@ -2,11 +2,11 @@ function Header() {
     return (
       <div 
         style = {{
-          fontSize: '32px',
-          color: '#333333',
-          fontWeight: 'bold',
+          fontSize: '36px',
+          color: '#495C60',
+          fontWeight: 'regular',
           textAlign: 'center',
-          fontFamily: 'Helvetica',
+          fontFamily: 'Lexend Peta'
         }}>
           <p>
             ELeNA

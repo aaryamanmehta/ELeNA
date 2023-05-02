@@ -6,7 +6,7 @@ function Map({ sidebarOpen }) {
     position: "relative",
     width: sidebarOpen ? "75%" : "95%",
     top: '15px',
-    height: "87vh",
+    height: "86vh",
     margin: "0 auto",
     border: "2px #2C3639 solid",
   }

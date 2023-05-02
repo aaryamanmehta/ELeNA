@@ -47,6 +47,12 @@ function Sidebar() {
               type="text"
               name="origin"
               style={inputStyle}
+              onMouseEnter={(e) => {
+                e.target.style.backgroundColor = '#F4EEE0';
+              }}
+              onMouseLeave={(e) => {
+                e.target.style.backgroundColor = 'white';
+              }}
             />
           </form>
           <br></br>
@@ -56,6 +62,12 @@ function Sidebar() {
               type="text"
               name="destination"
               style={inputStyle}
+              onMouseEnter={(e) => {
+                e.target.style.backgroundColor = '#F4EEE0';
+              }}
+              onMouseLeave={(e) => {
+                e.target.style.backgroundColor = 'white';
+              }}
             />
           </form>
           <br></br>
@@ -65,59 +77,47 @@ function Sidebar() {
             id="no-elevation"
             style={{
               ...buttonStyle,
-              backgroundColor: 'white',
-              color: 'black',
             }}
             onMouseEnter={(e) => {
               e.target.style.backgroundColor = '#F4EEE0';
-              e.target.style.color = '#2C3639';
             }}
             onMouseLeave={(e) => {
               e.target.style.backgroundColor = 'white';
-              e.target.style.color = 'black';
             }}
           > 
-            <a>No Elevation</a>
+            <a backgroundColor='transparent'>No Elevation</a>
           </button>
           <br></br>
           <button
             id="maximize-elevation"
             style={{
               ...buttonStyle,
-              backgroundColor: 'white',
-              color: 'black',
               width: '46%',
               marginRight: '2%',
             }}
             onMouseEnter={(e) => {
               e.target.style.backgroundColor = '#F4EEE0';
-              e.target.style.color = '#2C3639';
             }}
             onMouseLeave={(e) => {
               e.target.style.backgroundColor = 'white';
-              e.target.style.color = 'black';
             }}
           > 
-            <a>Maximize Elevation</a>
+            <a backgroundColor='transparent'>Maximize Elevation</a>
           </button>
           <button
             id="minimize-elevation"
             style={{
               ...buttonStyle,
-              backgroundColor: 'white',
-              color: 'black',
               width: '46%',
             }}
             onMouseEnter={(e) => {
               e.target.style.backgroundColor = '#F4EEE0';
-              e.target.style.color = '#2C3639';
             }}
             onMouseLeave={(e) => {
               e.target.style.backgroundColor = 'white';
-              e.target.style.color = 'black';
             }}
           > 
-            <a>Minimize Elevation</a>
+            <a backgroundColor='transparent'>Minimize Elevation</a>
           </button>
           <br></br>
       </div>

@@ -4,6 +4,6 @@
 
 ## List of features
 
-## Installation
+## Installation and Dependancies
 
 ## Testing

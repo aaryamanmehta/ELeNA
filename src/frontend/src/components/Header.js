@@ -6,7 +6,7 @@ function Header() {
           color: '#495C60',
           fontWeight: 'regular',
           textAlign: 'center',
-          fontFamily: 'Lexend Peta'
+          fontFamily: 'Lexend Peta',
         }}>
           <p>
             ELeNA

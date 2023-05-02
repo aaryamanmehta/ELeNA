@@ -32,7 +32,7 @@ const App = () => {
             fontSize: '24px',
             fontFamily: 'Domine',  
             color: sidebarOpen ? '#F4EEE0' : '#2C3639',
-            top: '12%',
+            top: '14vh',
             zIndex: '999',
             left: sidebarOpen ? 'calc(20% - 14px)' : 'calc(4% - 10px)',
           }}

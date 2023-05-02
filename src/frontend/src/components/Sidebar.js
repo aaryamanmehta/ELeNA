@@ -89,7 +89,7 @@ function Sidebar() {
             onMouseLeave={() => setNoElevationColor('white')}
             onClick = {() => setNoElevationColor('#F4EEE0')}
           > 
-            <a style={{backgroundColor:'transparent'}}>No Elevation</a>
+            <a>No Elevation</a>
           </button>
           <br></br>
           <button
@@ -104,7 +104,7 @@ function Sidebar() {
             onMouseLeave={() => setMaximizeElevationColor('white')}
             onClick = {() => setMaximizeElevationColor('#F4EEE0')}
           > 
-            <a style={{backgroundColor:'transparent'}}>Maximize Elevation</a>
+            <a>Maximize Elevation</a>
           </button>
           <button
             id="minimize-elevation"
@@ -117,7 +117,7 @@ function Sidebar() {
             onMouseLeave={() => setMinimizeElevationColor('white')}
             onClick = {() => setMinimizeElevationColor('#F4EEE0')}
           > 
-            <a style={{backgroundColor:'transparent'}}>Minimize Elevation</a>
+            <a>Minimize Elevation</a>
           </button>
           <br></br>
       </div>

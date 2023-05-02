@@ -1,6 +1,12 @@
-import React from 'react';
+import React, {useState, useEffect} from 'react';
 
 function Sidebar() {
+  const [originColor, setOriginColor] = useState('white');
+  const [destinationColor, setDestinationColor] = useState('white');
+  const [noElevationColor, setNoElevationColor] = useState('white');
+  const [maximizeElevationColor, setMaximizeElevationColor] = useState('white');
+  const [minimizeElevationColor, setMinimizeElevationColor] = useState('white');
+  
   const buttonStyle = {
     width: '95%',
     padding: '4px',
@@ -46,13 +52,13 @@ function Sidebar() {
             <input
               type="text"
               name="origin"
-              style={inputStyle}
-              onMouseEnter={(e) => {
-                e.target.style.backgroundColor = '#F4EEE0';
+              style={{
+                ...inputStyle,
+                backgroundColor: originColor,
               }}
-              onMouseLeave={(e) => {
-                e.target.style.backgroundColor = 'white';
-              }}
+              onMouseEnter={() => setOriginColor('#F4EEE0')}
+              onMouseLeave={() => setOriginColor('white')}
+              onClick = {() => setOriginColor('#F4EEE0')}
             />
           </form>
           <br></br>
@@ -61,13 +67,13 @@ function Sidebar() {
           <input
               type="text"
               name="destination"
-              style={inputStyle}
-              onMouseEnter={(e) => {
-                e.target.style.backgroundColor = '#F4EEE0';
+              style={{
+                ...inputStyle,
+                backgroundColor: destinationColor,
               }}
-              onMouseLeave={(e) => {
-                e.target.style.backgroundColor = 'white';
-              }}
+              onMouseEnter={() => setDestinationColor('#F4EEE0')}
+              onMouseLeave={() => setDestinationColor('white')}
+              onClick = {() => setDestinationColor('#F4EEE0')}
             />
           </form>
           <br></br>
@@ -77,15 +83,13 @@ function Sidebar() {
             id="no-elevation"
             style={{
               ...buttonStyle,
+              backgroundColor: noElevationColor
             }}
-            onMouseEnter={(e) => {
-              e.target.style.backgroundColor = '#F4EEE0';
-            }}
-            onMouseLeave={(e) => {
-              e.target.style.backgroundColor = 'white';
-            }}
+            onMouseEnter={() => setNoElevationColor('#F4EEE0')}
+            onMouseLeave={() => setNoElevationColor('white')}
+            onClick = {() => setNoElevationColor('#F4EEE0')}
           > 
-            <a backgroundColor='transparent'>No Elevation</a>
+            <a style={{backgroundColor:'transparent'}}>No Elevation</a>
           </button>
           <br></br>
           <button
@@ -94,30 +98,26 @@ function Sidebar() {
               ...buttonStyle,
               width: '46%',
               marginRight: '2%',
+              backgroundColor: maximizeElevationColor
             }}
-            onMouseEnter={(e) => {
-              e.target.style.backgroundColor = '#F4EEE0';
-            }}
-            onMouseLeave={(e) => {
-              e.target.style.backgroundColor = 'white';
-            }}
+            onMouseEnter={() => setMaximizeElevationColor('#F4EEE0')}
+            onMouseLeave={() => setMaximizeElevationColor('white')}
+            onClick = {() => setMaximizeElevationColor('#F4EEE0')}
           > 
-            <a backgroundColor='transparent'>Maximize Elevation</a>
+            <a style={{backgroundColor:'transparent'}}>Maximize Elevation</a>
           </button>
           <button
             id="minimize-elevation"
             style={{
               ...buttonStyle,
               width: '46%',
+              backgroundColor: minimizeElevationColor
             }}
-            onMouseEnter={(e) => {
-              e.target.style.backgroundColor = '#F4EEE0';
-            }}
-            onMouseLeave={(e) => {
-              e.target.style.backgroundColor = 'white';
-            }}
+            onMouseEnter={() => setMinimizeElevationColor('#F4EEE0')}
+            onMouseLeave={() => setMinimizeElevationColor('white')}
+            onClick = {() => setMinimizeElevationColor('#F4EEE0')}
           > 
-            <a backgroundColor='transparent'>Minimize Elevation</a>
+            <a style={{backgroundColor:'transparent'}}>Minimize Elevation</a>
           </button>
           <br></br>
       </div>

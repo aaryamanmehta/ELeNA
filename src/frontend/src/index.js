@@ -34,7 +34,7 @@ const App = () => {
             color: sidebarOpen ? '#F4EEE0' : '#2C3639',
             top: '12%',
             zIndex: '999',
-            left: sidebarOpen ? 'calc(20% - 14px)' : 'calc(14% - 10px)',
+            left: sidebarOpen ? 'calc(20% - 14px)' : 'calc(4% - 10px)',
           }}
         >
           {sidebarOpen ? '<<' : '>>'}

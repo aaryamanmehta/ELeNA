@@ -26,12 +26,18 @@ const App = () => {
           className="sidebar-toggle-button"
           onClick={handleSidebarToggle}
           style={{
-            position: sidebarOpen ? 'absolute' : 'relative',
-            top: '15px',
-            left: sidebarOpen ? 'calc(20% + 10px)' : '10px',
+            position: sidebarOpen ? 'absolute' : 'absolute',
+            border: 'none',
+            backgroundColor: 'transparent',
+            fontSize: '24px',
+            fontFamily: 'Domine',  
+            color: sidebarOpen ? '#F4EEE0' : '#2C3639',
+            top: '12%',
+            zIndex: '999',
+            left: sidebarOpen ? 'calc(20% - 14px)' : 'calc(14% - 10px)',
           }}
         >
-          {sidebarOpen ? '<' : '>'}
+          {sidebarOpen ? '<<' : '>>'}
         </button>
       </div>
     </React.StrictMode>

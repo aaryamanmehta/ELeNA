@@ -3,10 +3,10 @@ import React, {useState, useEffect} from 'react';
 function Sidebar() {
   const [originColor, setOriginColor] = useState('white');
   const [destinationColor, setDestinationColor] = useState('white');
-  const [noElevationColor, setNoElevationColor] = useState('white');
-  const [maximizeElevationColor, setMaximizeElevationColor] = useState('white');
-  const [minimizeElevationColor, setMinimizeElevationColor] = useState('white');
-  
+  const [elevationPreference, setElevationPreference] = useState('');
+  const handleElevationPreferenceClick = (preference) => {
+    setElevationPreference(preference);
+  }
   const buttonStyle = {
     width: '95%',
     padding: '4px',
@@ -83,11 +83,9 @@ function Sidebar() {
             id="no-elevation"
             style={{
               ...buttonStyle,
-              backgroundColor: noElevationColor
+              backgroundColor: elevationPreference === 'no-elevation' ? '#F4EEE0' : 'white'
             }}
-            onMouseEnter={() => setNoElevationColor('#F4EEE0')}
-            onMouseLeave={() => setNoElevationColor('white')}
-            onClick = {() => setNoElevationColor('#F4EEE0')}
+            onClick={() => handleElevationPreferenceClick('no-elevation')}
           > 
             <a>No Elevation</a>
           </button>
@@ -98,11 +96,9 @@ function Sidebar() {
               ...buttonStyle,
               width: '46%',
               marginRight: '2%',
-              backgroundColor: maximizeElevationColor
+              backgroundColor: elevationPreference === 'maximize-elevation' ? '#F4EEE0' : 'white'
             }}
-            onMouseEnter={() => setMaximizeElevationColor('#F4EEE0')}
-            onMouseLeave={() => setMaximizeElevationColor('white')}
-            onClick = {() => setMaximizeElevationColor('#F4EEE0')}
+            onClick={() => handleElevationPreferenceClick('maximize-elevation')}    
           > 
             <a>Maximize Elevation</a>
           </button>
@@ -111,11 +107,9 @@ function Sidebar() {
             style={{
               ...buttonStyle,
               width: '46%',
-              backgroundColor: minimizeElevationColor
+              backgroundColor: elevationPreference === 'minimize-elevation' ? '#F4EEE0' : 'white'
             }}
-            onMouseEnter={() => setMinimizeElevationColor('#F4EEE0')}
-            onMouseLeave={() => setMinimizeElevationColor('white')}
-            onClick = {() => setMinimizeElevationColor('#F4EEE0')}
+            onClick={() => handleElevationPreferenceClick('minimize-elevation')}
           > 
             <a>Minimize Elevation</a>
           </button>

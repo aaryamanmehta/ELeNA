@@ -3,8 +3,10 @@ import { MapContainer, TileLayer } from 'react-leaflet';
 
 function Map() {
   const style = {
-    width: "65%",
-    height: "85vh",
+    position: "relative",
+    width: "75%",
+    top: '15px',
+    height: "87vh",
     margin: "0 auto",
     border: "2px #2C3639 solid",
   }

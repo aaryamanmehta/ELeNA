@@ -1,6 +1,27 @@
 import React from 'react';
 
 function Sidebar() {
+  const buttonStyle = {
+    width: '95%',
+    padding: '4px',
+    marginBottom: '2vh',
+    border: 'none',
+    borderRadius: '7px',
+    cursor: 'pointer',
+    fontFamily: 'Domine',
+    fontSize: '12px',
+    boxShadow: '0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19)',
+  };
+
+  const inputStyle = {
+    width: '95%',
+    padding: '4px',
+    marginBottom: '2vh',
+    border: 'none',
+    borderRadius: '7px',
+    boxShadow: '0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19)',
+  };
+
     return (
       <div 
         style = {{
@@ -22,24 +43,80 @@ function Sidebar() {
         }}>
           <a style={{display:'flex', marginBottom:'2vh', marginTop:'15vh'}}>Origin</a>
           <form> 
-            <input type="text" name="origin" style={{width: '95%', padding: '4px', marginBottom:'2vh', border:'none', borderRadius:'7px', boxShadow: '0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19)'}}/>
+            <input
+              type="text"
+              name="origin"
+              style={inputStyle}
+            />
           </form>
           <br></br>
           <a style={{display:'flex', marginBottom:'2vh'}}>Destination</a>
           <form>
-            <input type="text" name="destination" style={{width: '95%', padding: '4px', marginBottom:'2vh', border:'none', borderRadius:'7px', boxShadow: '0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19)'}}/>
+          <input
+              type="text"
+              name="destination"
+              style={inputStyle}
+            />
           </form>
           <br></br>
           <a style={{display:'flex', marginBottom:'0vh'}}>Elevation Preference</a>
           <br></br>
-          <button id="no-elevation" style={{width: '95%', padding:'4px', marginBottom:'2vh', border:'none', borderRadius:'7px', cursor:'pointer', fontFamily: 'Domine', fontSize: '12px', boxShadow: '0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19)'}}>
+          <button
+            id="no-elevation"
+            style={{
+              ...buttonStyle,
+              backgroundColor: 'white',
+              color: 'black',
+            }}
+            onMouseEnter={(e) => {
+              e.target.style.backgroundColor = '#F4EEE0';
+              e.target.style.color = '#2C3639';
+            }}
+            onMouseLeave={(e) => {
+              e.target.style.backgroundColor = 'white';
+              e.target.style.color = 'black';
+            }}
+          > 
             <a>No Elevation</a>
           </button>
           <br></br>
-          <button id="maximize-elevation" style={{width: '46%', padding:'4px', marginBottom:'2vh', marginRight:'0.5vw', border:'none', borderRadius:'7px', cursor:'pointer', fontFamily: 'Domine', fontSize: '12px', boxShadow: '0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19)'}}>
+          <button
+            id="maximize-elevation"
+            style={{
+              ...buttonStyle,
+              backgroundColor: 'white',
+              color: 'black',
+              width: '46%',
+              marginRight: '2%',
+            }}
+            onMouseEnter={(e) => {
+              e.target.style.backgroundColor = '#F4EEE0';
+              e.target.style.color = '#2C3639';
+            }}
+            onMouseLeave={(e) => {
+              e.target.style.backgroundColor = 'white';
+              e.target.style.color = 'black';
+            }}
+          > 
             <a>Maximize Elevation</a>
           </button>
-          <button id="minimize-elevation" style={{width: '46%', padding:'4px', marginBottom:'2vh', border:'none', borderRadius:'7px', cursor:'pointer', fontFamily: 'Domine', fontSize: '12px', boxShadow: '0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19)'}}>
+          <button
+            id="minimize-elevation"
+            style={{
+              ...buttonStyle,
+              backgroundColor: 'white',
+              color: 'black',
+              width: '46%',
+            }}
+            onMouseEnter={(e) => {
+              e.target.style.backgroundColor = '#F4EEE0';
+              e.target.style.color = '#2C3639';
+            }}
+            onMouseLeave={(e) => {
+              e.target.style.backgroundColor = 'white';
+              e.target.style.color = 'black';
+            }}
+          > 
             <a>Minimize Elevation</a>
           </button>
           <br></br>

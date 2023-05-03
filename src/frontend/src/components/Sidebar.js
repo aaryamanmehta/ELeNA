@@ -1,4 +1,5 @@
 import React, {useState, useEffect} from 'react';
+import RangeSlider from './RangeSlider';
 
 function Sidebar() {
   const [originColor, setOriginColor] = useState('white');
@@ -114,6 +115,9 @@ function Sidebar() {
             <a>Minimize Elevation</a>
           </button>
           <br></br>
+          <br></br>
+          <br></br>
+          <RangeSlider />
       </div>
     );
   }

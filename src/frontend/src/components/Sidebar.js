@@ -1,5 +1,6 @@
 import React, {useState, useEffect} from 'react';
-
+import Slider from './Slider'
+import { getCurrentValue } from './Slider';
 function Sidebar() {
   const [originColor, setOriginColor] = useState('white');
   const [destinationColor, setDestinationColor] = useState('white');
@@ -114,6 +115,8 @@ function Sidebar() {
             <a>Minimize Elevation</a>
           </button>
           <br></br>
+          <br></br>
+          <Slider />
       </div>
     );
   }

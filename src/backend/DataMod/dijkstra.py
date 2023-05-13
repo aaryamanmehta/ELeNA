@@ -18,3 +18,5 @@ def dijkstra(source : tuple, destination : tuple, graph):
 
     # apply Dijkstra's algorithm to find the shortest path between the source and destination nodes
     path = nx.shortest_path(graph, source_node, destination_node, weight='length')
+
+    return path

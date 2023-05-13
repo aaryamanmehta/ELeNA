@@ -1,8 +1,11 @@
+import osmnx as ox
+import networkx as nx
+
 '''
 This method returns the shortest path from source to destination
 
 input : 
-source and destination represent the locations as `tuples of coordinates`
+source and destination represent the locations as `tuples of coordinates` (lattitude, longtitude)
 graph is the loaded graph containing both source and destination
 
 return:

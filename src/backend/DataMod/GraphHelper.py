@@ -6,6 +6,9 @@ def save_graph(place, filename):
 
 '''
 Returns the saved graph for the given filename
+
+input : name of the file where the graph is saved
+return : OSMnx Graph Object
 '''
 def load_graph(filename):
     # it's guarenteed this file exists

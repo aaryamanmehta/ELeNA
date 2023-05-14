@@ -3,7 +3,6 @@ import Slider from './Slider'
 import { getCurrentValue } from './Slider';
 import { OpenStreetMapProvider } from 'leaflet-geosearch';
 import Select from 'react-select';
-// import 'node_modules/leaflet-geosearch/dist/geosearch.css';
 
 function Sidebar() {
   const [originColor, setOriginColor] = useState('white');
@@ -15,7 +14,8 @@ function Sidebar() {
 
   const provider = new OpenStreetMapProvider();
 
-  const [locationOptions, setLocationOptions] = useState([]);
+  const [originOptions, setoriginOptions] = useState([]);
+  const [destinationOptions, setDestinationOptions] = useState([]);
 
 
   const dropdownStyle = {
@@ -26,14 +26,29 @@ function Sidebar() {
     }),
   };
 
-  const handleSelectChange = (selectedOption) => {
+  const handleOriginAutocomplete = (selectedOption) => {
     provider.search({ query: selectedOption })
       .then((results) => {
         const newOptions = []
         for (let i = 0; i < results.length; i++) {
           newOptions.push({ value: results[i], label: results[i].label })
         }
-        setLocationOptions(newOptions)
+        setoriginOptions(newOptions)
+
+      })
+      .catch((error) => {
+        console.log('An error occurred:', error);
+      });
+  };
+
+  const handleDestinationAutocomplete = (selectedOption) => {
+    provider.search({ query: selectedOption })
+      .then((results) => {
+        const newOptions = []
+        for (let i = 0; i < results.length; i++) {
+          newOptions.push({ value: results[i], label: results[i].label })
+        }
+        setDestinationOptions(newOptions)
 
       })
       .catch((error) => {
@@ -86,32 +101,22 @@ function Sidebar() {
             <Select
               type="text"
               name="origin"
-              style={{
-                ...inputStyle,
-                backgroundColor: originColor,
-              }}
-              onMouseEnter={() => setOriginColor('#F4EEE0')}
-              onMouseLeave={() => setOriginColor('white')}
-              onClick = {() => setOriginColor('#F4EEE0')}
-              options={locationOptions}
+              options={originOptions}
               styles={dropdownStyle}
 
-              onInputChange={handleSelectChange}
+              onInputChange={handleOriginAutocomplete}
             />
           </form>
           <br></br>
           <a style={{display:'flex', marginBottom:'2vh'}}>Destination</a>
           <form>
-          <input
+          <Select
               type="text"
-              name="destination"
-              style={{
-                ...inputStyle,
-                backgroundColor: destinationColor,
-              }}
-              onMouseEnter={() => setDestinationColor('#F4EEE0')}
-              onMouseLeave={() => setDestinationColor('white')}
-              onClick = {() => setDestinationColor('#F4EEE0')}
+              name="Destination"
+              options={destinationOptions}
+              styles={dropdownStyle}
+
+              onInputChange={handleDestinationAutocomplete}
             />
           </form>
           <br></br>

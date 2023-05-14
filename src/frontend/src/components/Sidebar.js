@@ -18,8 +18,8 @@ function Sidebar() {
   const [locationOptions, setLocationOptions] = useState([]);
 
 
-  const customStyles = {
-    option: (provided, state) => ({
+  const dropdownStyle = {
+    option: (provided) => ({
       ...provided,
       fontFamily: 'Arial', // Replace with your desired font
       color: 'black', // Set the font color to black
@@ -27,12 +27,8 @@ function Sidebar() {
   };
 
   const handleSelectChange = (selectedOption) => {
-    // setSelectedOption(selectedOption);
-    // console.log("chang!")
-    // console.log(selectedOption)
     provider.search({ query: selectedOption })
       .then((results) => {
-        console.log(results); // [{}, {}, {}, ...]
         const newOptions = []
         for (let i = 0; i < results.length; i++) {
           newOptions.push({ value: results[i], label: results[i].label })
@@ -98,29 +94,9 @@ function Sidebar() {
               onMouseLeave={() => setOriginColor('white')}
               onClick = {() => setOriginColor('#F4EEE0')}
               options={locationOptions}
-              styles={customStyles}
+              styles={dropdownStyle}
 
               onInputChange={handleSelectChange}
-
-
-
-              // onChange={(event) => {
-              //   provider.search({ query: event.target.value })
-              //     .then((results) => {
-              //       console.log(results); // [{}, {}, {}, ...]
-              //     })
-              //     .catch((error) => {
-              //       console.log('An error occurred:', error);
-              //     });
-              // }}
-              // onChange={(event) => {
-              //   const results = await provider.search({ query: event.target.value });
-              //   console.log(results); // » [{}, {}, {}, ...]
-              // }}
-
-              // onChange={provider.search({ query: this.target.value }).then(function (result) {
-              //  console.log(result)
-              // })}
             />
           </form>
           <br></br>

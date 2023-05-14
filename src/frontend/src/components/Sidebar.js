@@ -101,9 +101,11 @@ function Sidebar() {
             <Select
               type="text"
               name="origin"
+              placeholder="Enter origin location"
               options={originOptions}
               styles={dropdownStyle}
-
+              loadingMessage={() => "Loading"} 
+              noOptionsMessage={() => ""} 
               onInputChange={handleOriginAutocomplete}
             />
           </form>
@@ -113,9 +115,11 @@ function Sidebar() {
           <Select
               type="text"
               name="Destination"
+              placeholder="Enter destination location"
               options={destinationOptions}
+              loadingMessage={() => "Loading"} 
+              noOptionsMessage={() => ""} 
               styles={dropdownStyle}
-
               onInputChange={handleDestinationAutocomplete}
             />
           </form>

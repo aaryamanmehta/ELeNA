@@ -101,7 +101,7 @@ function Sidebar() {
             <Select
               type="text"
               name="origin"
-              placeholder="Enter origin location"
+              placeholder="Enter origin"
               options={originOptions}
               styles={dropdownStyle}
               loadingMessage={() => "Loading"} 
@@ -115,7 +115,7 @@ function Sidebar() {
           <Select
               type="text"
               name="Destination"
-              placeholder="Enter destination location"
+              placeholder="Enter destination"
               options={destinationOptions}
               loadingMessage={() => "Loading"} 
               noOptionsMessage={() => ""} 

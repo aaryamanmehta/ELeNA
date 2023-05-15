@@ -16,7 +16,8 @@ function Sidebar() {
 
   const [originOptions, setoriginOptions] = useState([]);
   const [destinationOptions, setDestinationOptions] = useState([]);
-  const [selectedSource, setSelectedSource] = useState(); 
+  const [selectedSource, setSelectedSource] = useState();
+  const [selectedDestination, setSelectedDestination] = useState();
 
 
   const dropdownStyle = {
@@ -44,6 +45,10 @@ function Sidebar() {
 
   const handleOriginChange = (selectedOption) => {
     const selectedSource = JSON.parse(JSON.stringify(selectedOption)); //creates a deep copy of the selected option
+  }
+
+  const handleDestinationChange = (selectedOption) => {
+    const selectedDestination = JSON.parse(JSON.stringify(selectedOption)); //creates a deep copy of the selected option
   }
 
   const handleDestinationAutocomplete = (selectedOption) => {
@@ -127,6 +132,7 @@ function Sidebar() {
               noOptionsMessage={() => ""} 
               styles={dropdownStyle}
               onInputChange={handleDestinationAutocomplete}
+              onChange={handleDestinationChange}
             />
           </form>
           <br></br>

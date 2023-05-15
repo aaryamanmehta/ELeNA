@@ -16,8 +16,8 @@ function Sidebar() {
 
   const [originOptions, setoriginOptions] = useState([]);
   const [destinationOptions, setDestinationOptions] = useState([]);
-  const [selectedSource, setSelectedSource] = useState();
-  const [selectedDestination, setSelectedDestination] = useState();
+  let [selectedSource, setSelectedSource] = useState();
+  let [selectedDestination, setSelectedDestination] = useState();
 
 
   const dropdownStyle = {
@@ -44,11 +44,11 @@ function Sidebar() {
   };
 
   const handleOriginChange = (selectedOption) => {
-    const selectedSource = JSON.parse(JSON.stringify(selectedOption)); //creates a deep copy of the selected option
+    selectedSource = JSON.parse(JSON.stringify(selectedOption)); //creates a deep copy of the selected option
   }
 
   const handleDestinationChange = (selectedOption) => {
-    const selectedDestination = JSON.parse(JSON.stringify(selectedOption)); //creates a deep copy of the selected option
+    selectedDestination = JSON.parse(JSON.stringify(selectedOption)); //creates a deep copy of the selected option
   }
 
   const handleDestinationAutocomplete = (selectedOption) => {

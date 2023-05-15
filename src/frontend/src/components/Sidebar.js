@@ -66,11 +66,11 @@ function Sidebar() {
   };
 
   const handleOriginChange = (selectedOption) => {
-    selectedSource = JSON.parse(JSON.stringify(selectedOption)); //creates a deep copy of the selected option
+    setSelectedSource(JSON.parse(JSON.stringify(selectedOption)));
   }
 
   const handleDestinationChange = (selectedOption) => {
-    selectedDestination = JSON.parse(JSON.stringify(selectedOption)); //creates a deep copy of the selected option
+    setSelectedDestination(JSON.parse(JSON.stringify(selectedOption)))
   }
 
   const handleDestinationAutocomplete = (selectedOption) => {

@@ -16,6 +16,7 @@ function Sidebar() {
 
   const [originOptions, setoriginOptions] = useState([]);
   const [destinationOptions, setDestinationOptions] = useState([]);
+  const [selectedSource, setSelectedSource] = useState(); 
 
 
   const dropdownStyle = {
@@ -40,6 +41,10 @@ function Sidebar() {
         console.log('An error occurred:', error);
       });
   };
+
+  const handleOriginChange = (selectedOption) => {
+    const selectedSource = JSON.parse(JSON.stringify(selectedOption)); //creates a deep copy of the selected option
+  }
 
   const handleDestinationAutocomplete = (selectedOption) => {
     provider.search({ query: selectedOption })
@@ -107,6 +112,7 @@ function Sidebar() {
               loadingMessage={() => "Loading"} 
               noOptionsMessage={() => ""} 
               onInputChange={handleOriginAutocomplete}
+              onChange={handleOriginChange}
             />
           </form>
           <br></br>

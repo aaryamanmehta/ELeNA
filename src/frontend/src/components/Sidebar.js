@@ -10,7 +10,29 @@ function Sidebar() {
   const [elevationPreference, setElevationPreference] = useState('');
   const handleElevationPreferenceClick = (preference) => {
     setElevationPreference(preference);
-  }
+      // create an object with the selected source and destination
+      const data = {
+        source: selectedSource,
+        destination: selectedDestination,
+      };
+
+      // make a POST request to the server with the selected source and destination
+      fetch('http://localhost:8000/no-elevation/', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(data),
+      })
+      .then(response => {
+        // handle the response from the server
+        console.log(response);
+      })
+      .catch(error => {
+        // handle any errors
+        console.error(error);
+      });
+    }
 
   const provider = new OpenStreetMapProvider();
 

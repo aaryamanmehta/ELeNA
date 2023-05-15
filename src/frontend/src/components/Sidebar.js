@@ -17,7 +17,7 @@ function Sidebar() {
       };
 
       // make a POST request to the server with the selected source and destination
-      fetch('http://localhost:8000/no-elevation/', {
+      fetch('http://localhost:8000/no-elevation', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

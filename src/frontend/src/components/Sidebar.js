@@ -12,8 +12,8 @@ function Sidebar() {
     setElevationPreference(preference);
       // create an object with the selected source and destination
       const data = {
-        source: selectedSource,
-        destination: selectedDestination,
+        source: JSON.stringify(selectedSource),
+        destination: JSON.stringify(selectedDestination),
       };
 
       // make a POST request to the server with the selected source and destination

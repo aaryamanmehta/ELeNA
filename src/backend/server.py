@@ -1,7 +1,12 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
+from pydantic import BaseModel
 
 app = FastAPI()
+
+class LocationData(BaseModel):
+    source: str
+    destination: str
 
 origins = [
     "http://localhost",
@@ -21,6 +26,6 @@ async def read_root():
     return {"Hello": "World"}
 
 @app.post("/no-elevation")
-async def shortest_route_no_elevation(data):
+async def shortest_route_no_elevation(data : LocationData):
     print(data)
     return 1 

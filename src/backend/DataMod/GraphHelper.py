@@ -28,3 +28,21 @@ def get_location(location_request : str):
     city = label_list[-5]
 
     return city, county, state, country
+
+def generate_graph(source_info : tuple[str], destination_info : tuple[str]):
+    if source_info[-1] != destination_info[-1]:
+        #not the same country
+        pass
+    elif source_info[-2] != destination_info[-2]:
+        #not the same state
+        pass
+    elif source_info[-3] != destination_info[-3]:
+        #not the same county
+        pass
+    elif source_info[-4] != destination_info[-4]:
+        #not the same city/town
+        pass
+    else:
+        #the source and destination are located in the same city/town
+        #generate the city/town graph and save it
+        pass

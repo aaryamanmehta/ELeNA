@@ -1,4 +1,5 @@
 import osmnx as ox
+import json
 
 def save_graph(place, filename):
     G = ox.graph_from_place(place, network_type="walk")
@@ -14,10 +15,12 @@ def load_graph(filename):
     # it's guarenteed this file exists
     return ox.load_graphml(filename)
 
-def get_location(label : str):
+def get_location(location_request : str):
     '''
-    Returns the City/Town, County, State and Country from the label
+    Returns the City/Town, County, State and Country from the "label" in the location request
     '''
+    location_info = json.loads(location_request)
+    label = location_info["label"]
     label_list = label.split(", ")
     country = label_list[-1]
     state = label_list[-3]

@@ -13,3 +13,15 @@ def load_graph(filename):
     '''
     # it's guarenteed this file exists
     return ox.load_graphml(filename)
+
+def get_location(label : str):
+    '''
+    Returns the City/Town, County, State and Country from the label
+    '''
+    label_list = label.split(", ")
+    country = label_list[-1]
+    state = label_list[-3]
+    county = label_list[-4]
+    city = label_list[-5]
+
+    return city, county, state, country

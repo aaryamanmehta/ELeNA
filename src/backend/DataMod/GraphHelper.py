@@ -41,7 +41,7 @@ def generate_graph(source_info : tuple[str], destination_info : tuple[str]):
     elif source_info[-3] != destination_info[-3]:
         #not the same county
         #generate the state graph and save it
-        save_graph(source_info[-3], source_info[-3])
+        pass #save_graph(source_info[-3], source_info[-3])
     elif source_info[-4] != destination_info[-4]:
         #not the same city/town
         #generate the county graph and save it

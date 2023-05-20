@@ -46,9 +46,9 @@ def generate_graph(source_info : tuple[str], destination_info : tuple[str]):
         #not the same city/town
         #generate the county graph and save it
         # of the form : Hampshire County, Massachusetts
-        save_graph(f"{source_info[-3]}, {source_info[-2]}", source_info[-2])
+        save_graph(f"{source_info[-3]}, {source_info[-2]}", f"DataMod/GeneratedMaps/{source_info[-3]}.graphml")
     else:
         #the source and destination are located in the same city/town
         #generate the city/town graph and save it
         # of the form : Amherst, Massachusetts
-        save_graph(f"{source_info[-4]}, {source_info[-2]}", source_info[-4])
+        save_graph(f"{source_info[-4]}, {source_info[-2]}", f"DataMod/GeneratedMaps/{source_info[-4]}.graphml")

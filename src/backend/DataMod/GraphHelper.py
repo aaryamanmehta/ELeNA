@@ -3,7 +3,9 @@ import json
 
 def save_graph(place, filename):
     G = ox.graph_from_place(place, network_type="walk")
+    print(filename)
     ox.save_graphml(G, filename)
+    print('save done')
 
 def load_graph(filename):
     '''
@@ -38,11 +40,15 @@ def generate_graph(source_info : tuple[str], destination_info : tuple[str]):
         pass
     elif source_info[-3] != destination_info[-3]:
         #not the same county
-        pass
+        #generate the state graph and save it
+        save_graph(source_info[-3], source_info[-3])
     elif source_info[-4] != destination_info[-4]:
         #not the same city/town
-        pass
+        #generate the county graph and save it
+        # of the form : Hampshire County, Massachusetts
+        save_graph(f"{source_info[-3]}, {source_info[-2]}", source_info[-2])
     else:
         #the source and destination are located in the same city/town
         #generate the city/town graph and save it
-        pass
+        # of the form : Amherst, Massachusetts
+        save_graph(f"{source_info[-4]}, {source_info[-2]}", source_info[-4])

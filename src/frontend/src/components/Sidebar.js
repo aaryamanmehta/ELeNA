@@ -10,12 +10,36 @@ function Sidebar() {
   const [elevationPreference, setElevationPreference] = useState('');
   const handleElevationPreferenceClick = (preference) => {
     setElevationPreference(preference);
-  }
+      // create an object with the selected source and destination
+      const data = {
+        source: JSON.stringify(selectedSource),
+        destination: JSON.stringify(selectedDestination),
+      };
+
+      // make a POST request to the server with the selected source and destination
+      fetch('http://localhost:8000/no-elevation', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(data),
+      })
+      .then(response => {
+        // handle the response from the server
+        console.log(response);
+      })
+      .catch(error => {
+        // handle any errors
+        console.error(error);
+      });
+    }
 
   const provider = new OpenStreetMapProvider();
 
   const [originOptions, setoriginOptions] = useState([]);
   const [destinationOptions, setDestinationOptions] = useState([]);
+  let [selectedSource, setSelectedSource] = useState();
+  let [selectedDestination, setSelectedDestination] = useState();
 
 
   const dropdownStyle = {
@@ -40,6 +64,14 @@ function Sidebar() {
         console.log('An error occurred:', error);
       });
   };
+
+  const handleOriginChange = (selectedOption) => {
+    setSelectedSource(JSON.parse(JSON.stringify(selectedOption)));
+  }
+
+  const handleDestinationChange = (selectedOption) => {
+    setSelectedDestination(JSON.parse(JSON.stringify(selectedOption)))
+  }
 
   const handleDestinationAutocomplete = (selectedOption) => {
     provider.search({ query: selectedOption })
@@ -107,6 +139,7 @@ function Sidebar() {
               loadingMessage={() => "Loading"} 
               noOptionsMessage={() => ""} 
               onInputChange={handleOriginAutocomplete}
+              onChange={handleOriginChange}
             />
           </form>
           <br></br>
@@ -121,6 +154,7 @@ function Sidebar() {
               noOptionsMessage={() => ""} 
               styles={dropdownStyle}
               onInputChange={handleDestinationAutocomplete}
+              onChange={handleDestinationChange}
             />
           </form>
           <br></br>

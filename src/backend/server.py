@@ -12,7 +12,7 @@ class LocationData(BaseModel):
 class elevationLocationData(BaseModel):
     source: str
     destination: str
-    elevation: float
+    elevation: str
 
 origins = [
     "http://localhost",
@@ -35,5 +35,10 @@ async def read_root():
 async def shortest_route_no_elevation(data : LocationData):
     path = getElevationPath(data.source, data.destination, "min")
     print(path)
+    return path 
+
+@app.post("/with-elevation")
+async def shortest_route_with_elevation(data : elevationLocationData):
+    path = getElevationPath(data.source, data.destination, data.elevation )
     return path 
 

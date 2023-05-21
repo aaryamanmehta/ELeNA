@@ -32,6 +32,13 @@ def get_location(location_request : str):
 
     return city, county, state, country
 
+def get_coordinates(location_request : str) -> tuple:
+    '''
+    Returns the lattitude and longitude from the request
+    '''
+    location_info = json.loads(location_request)
+    return location_info["value"]["x"], location_info["value"]["y"]
+
 def generate_graph(source_info : tuple[str], destination_info : tuple[str]):
     if source_info[-1] != destination_info[-1]:
         #not the same country

@@ -8,6 +8,11 @@ class LocationData(BaseModel):
     source: str
     destination: str
 
+class elevationLocationData(BaseModel):
+    source: str
+    destination: str
+    elevation: float
+
 origins = [
     "http://localhost",
     "http://localhost:3000",
@@ -29,3 +34,4 @@ async def read_root():
 async def shortest_route_no_elevation(data : LocationData):
     print(data)
     return 1 
+

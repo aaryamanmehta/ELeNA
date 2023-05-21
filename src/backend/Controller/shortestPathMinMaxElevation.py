@@ -11,12 +11,8 @@ def getElevationPath(source : str, dest : str, elevation : str):
     G = ox.elevation.add_node_elevations_google(G, api_key, precision=3)
 
     source_coords = get_coordinates(source)
-
     destination_coords = get_coordinates(dest)
-    # for node in G.nodes:
-    #     print(G.nodes[node])
-    #     if source_coords[0] == G.nodes[node]['x'] and source_coords[1] == G.nodes[node]['y']:
-    #         print(node)
+ 
     path = findshortestPathElevation(G, source_coords, destination_coords, elevation)
  
 

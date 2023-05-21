@@ -30,4 +30,7 @@ async def read_root():
 async def shortest_route_no_elevation(data : LocationData):
     path = get_shortest_path(data.source, data.destination)
     print(path)
-    return 1 
+    response = {
+        "path" : path,
+    }
+    return response

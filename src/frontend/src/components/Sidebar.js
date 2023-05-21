@@ -8,12 +8,16 @@ function Sidebar() {
   const [originColor, setOriginColor] = useState('white');
   const [destinationColor, setDestinationColor] = useState('white');
   const [elevationPreference, setElevationPreference] = useState('');
+  const [isOriginLoading, setIsOriginLoading] = useState(false);
+  const [isDestLoading, setIsDestLoading] = useState(false);
+
   const handleElevationPreferenceClick = (preference) => {
     setElevationPreference(preference);
       // create an object with the selected source and destination
       const data = {
         source: JSON.stringify(selectedSource),
         destination: JSON.stringify(selectedDestination),
+        //Add elevation preference and percentage
       };
 
       // make a POST request to the server with the selected source and destination
@@ -51,17 +55,23 @@ function Sidebar() {
   };
 
   const handleOriginAutocomplete = (selectedOption) => {
+    setIsOriginLoading(true);
     provider.search({ query: selectedOption })
       .then((results) => {
         const newOptions = []
+
+        console.log(results)
         for (let i = 0; i < results.length; i++) {
           newOptions.push({ value: results[i], label: results[i].label })
         }
         setoriginOptions(newOptions)
+        setIsOriginLoading(false); // Set loading state to false after API call completes
+   
 
       })
       .catch((error) => {
         console.log('An error occurred:', error);
+        setIsOriginLoading(false);
       });
   };
 
@@ -74,6 +84,7 @@ function Sidebar() {
   }
 
   const handleDestinationAutocomplete = (selectedOption) => {
+    setIsDestLoading(true);
     provider.search({ query: selectedOption })
       .then((results) => {
         const newOptions = []
@@ -81,10 +92,12 @@ function Sidebar() {
           newOptions.push({ value: results[i], label: results[i].label })
         }
         setDestinationOptions(newOptions)
+        setIsDestLoading(false); // Set loading state to false after API call completes
 
       })
       .catch((error) => {
         console.log('An error occurred:', error);
+        setIsDestLoading(false); 
       });
   };
 
@@ -136,8 +149,7 @@ function Sidebar() {
               placeholder="Enter origin"
               options={originOptions}
               styles={dropdownStyle}
-              loadingMessage={() => "Loading"} 
-              noOptionsMessage={() => ""} 
+              noOptionsMessage={() => (isOriginLoading ? "Loading..." : "")}
               onInputChange={handleOriginAutocomplete}
               onChange={handleOriginChange}
             />
@@ -150,8 +162,7 @@ function Sidebar() {
               name="Destination"
               placeholder="Enter destination"
               options={destinationOptions}
-              loadingMessage={() => "Loading"} 
-              noOptionsMessage={() => ""} 
+              noOptionsMessage={() => (isDestLoading ? "Loading..." : "")}
               styles={dropdownStyle}
               onInputChange={handleDestinationAutocomplete}
               onChange={handleDestinationChange}

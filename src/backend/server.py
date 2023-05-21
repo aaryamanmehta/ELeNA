@@ -1,6 +1,7 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
+from Controller.shortestPathMinMaxElevation import getElevationPath
 
 app = FastAPI()
 
@@ -32,6 +33,7 @@ async def read_root():
 
 @app.post("/no-elevation")
 async def shortest_route_no_elevation(data : LocationData):
-    print(data)
-    return 1 
+    path = getElevationPath(data.source, data.destination, "min")
+    print(path)
+    return path 
 

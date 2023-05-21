@@ -10,14 +10,37 @@ function Sidebar() {
   const [elevationPreference, setElevationPreference] = useState('');
   const handleElevationPreferenceClick = (preference) => {
     setElevationPreference(preference);
-      // create an object with the selected source and destination
-      const data = {
-        source: JSON.stringify(selectedSource),
-        destination: JSON.stringify(selectedDestination),
-      };
+
+    let URL = "http://localhost:8000/"
+    let data = ""
+      
+      if (preference == "no-elevation"){  
+        URL = URL + preference    
+        data = {
+         // create an object with the selected source and destination
+          source: JSON.stringify(selectedSource),
+          destination: JSON.stringify(selectedDestination),
+        };
+      } else {  
+        URL = URL + "with-elevation" 
+        let elevation = "" 
+        if (preference == "minimize-elevation"){ 
+          elevation = "min"
+        } else if (preference == "maximize-elevation"){ 
+          elevation = "max"
+        } else {
+          console.log("error with min/max elevation")
+        }
+        data = {
+          source: JSON.stringify(selectedSource),
+          destination: JSON.stringify(selectedDestination),
+          elevation: elevation,
+          //TODO add % shortest path
+        };
+      }
 
       // make a POST request to the server with the selected source and destination
-      fetch('http://localhost:8000/no-elevation', {
+      fetch(URL, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -33,6 +56,7 @@ function Sidebar() {
         console.error(error);
       });
     }
+  
 
   const provider = new OpenStreetMapProvider();
 

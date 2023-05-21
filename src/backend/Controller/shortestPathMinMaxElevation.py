@@ -14,7 +14,6 @@ def getElevationPath(source : str, dest : str, elevation : str):
     destination_coords = get_coordinates(dest)
  
     path = findshortestPathElevation(G, source_coords, destination_coords, elevation)
- 
 
     return path
     

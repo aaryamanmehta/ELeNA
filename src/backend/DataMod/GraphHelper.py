@@ -1,5 +1,6 @@
 import osmnx as ox
 import json
+import os
 
 def save_graph(place, filename):
     G = ox.graph_from_place(place, network_type="walk")
@@ -54,9 +55,17 @@ def generate_graph(source_info : tuple[str], destination_info : tuple[str]):
         #not the same city/town
         #generate the county graph and save it
         # of the form : Hampshire County, Massachusetts
-        return save_graph(f"{source_info[-3]}, {source_info[-2]}", f"DataMod/GeneratedMaps/{source_info[-3]}.graphml")
+        if os.path.exists(f"DataMod/GeneratedMaps/{source_info[-3]}.graphml"):
+            G = load_graph(f"DataMod/GeneratedMaps/{source_info[-3]}.graphml")
+        else:
+            G = save_graph(f"{source_info[-3]}, {source_info[-2]}", f"DataMod/GeneratedMaps/{source_info[-3]}.graphml")
+        return G
     else:
         #the source and destination are located in the same city/town
         #generate the city/town graph and save it
         # of the form : Amherst, Massachusetts
-        return save_graph(f"{source_info[-4]}, {source_info[-2]}", f"DataMod/GeneratedMaps/{source_info[-4]}.graphml")
+        if os.path.exists(f"DataMod/GeneratedMaps/{source_info[-4]}.graphml"):
+            G = load_graph(f"DataMod/GeneratedMaps/{source_info[-4]}.graphml")
+        else:
+            G = save_graph(f"{source_info[-4]}, {source_info[-2]}", f"DataMod/GeneratedMaps/{source_info[-4]}.graphml")
+        return G

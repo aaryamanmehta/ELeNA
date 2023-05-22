@@ -1,6 +1,6 @@
 from DataMod.GraphHelper import *
+from DataMod.PathHelper import *
 from DataMod.ElevationDijkstra import *
-from Controller.shortestPathNoElevation import get_shortest_path
 import osmnx as ox
 
 def getElevationPath(source : str, dest : str, elevation : str):
@@ -12,9 +12,16 @@ def getElevationPath(source : str, dest : str, elevation : str):
 
     source_coords = get_coordinates(source)
     destination_coords = get_coordinates(dest)
- 
-    path = findshortestPathElevation(G, source_coords, destination_coords, elevation)
+    source_node = ox.distance.nearest_nodes(G, source_coords[0], source_coords[1])
+    destination_node = ox.distance.nearest_nodes(G, destination_coords[0], destination_coords[1])
 
+    pathLen = get_shortest_length(G, source_node, destination_node)
+    elev = True
+    if elevation == "max":
+        elev = True
+    elif elevation == "min":
+        elev = False
+    path = findshortestPathElevation(G, source_coords, destination_coords, elev, pathLen)
     return path
     
     

@@ -40,6 +40,13 @@ def get_coordinates(location_request : str) -> tuple:
     location_info = json.loads(location_request)
     return location_info["value"]["x"], location_info["value"]["y"]
 
+def get_osm_id(location_request : str) -> str:
+    '''
+    Returns the osm_id from the request
+    '''
+    location_info = json.loads(location_request)
+    return str(location_info["value"]["raw"]["osm_id"])
+
 def generate_graph(source_info : tuple[str], destination_info : tuple[str]):
     if source_info[-1] != destination_info[-1]:
         #not the same country

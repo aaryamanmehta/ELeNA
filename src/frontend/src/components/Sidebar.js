@@ -5,58 +5,62 @@ import { OpenStreetMapProvider } from 'leaflet-geosearch';
 import Select from 'react-select';
 
 function Sidebar() {
+  const server = "http://localhost:8000/"
   const [originColor, setOriginColor] = useState('white');
   const [destinationColor, setDestinationColor] = useState('white');
   const [elevationPreference, setElevationPreference] = useState('');
+  
   const handleElevationPreferenceClick = (preference) => {
     setElevationPreference(preference);
-
-    let URL = "http://localhost:8000/"
     let data = ""
+    let endpoint = ""
       
-      if (preference == "no-elevation"){  
-        URL = URL + preference    
-        data = {
-         // create an object with the selected source and destination
-          source: JSON.stringify(selectedSource),
-          destination: JSON.stringify(selectedDestination),
-        };
-      } else {  
-        URL = URL + "with-elevation" 
-        let elevation = "" 
-        if (preference == "minimize-elevation"){ 
-          elevation = "min"
-        } else if (preference == "maximize-elevation"){ 
-          elevation = "max"
-        } else {
-          console.log("error with min/max elevation")
-        }
-        data = {
-          source: JSON.stringify(selectedSource),
-          destination: JSON.stringify(selectedDestination),
-          elevation: elevation,
-          //TODO add % shortest path
-        };
+    if (preference == "no-elevation"){  
+      endpoint = server + preference    
+      data = {
+        // create an object with the selected source and destination
+        source: JSON.stringify(selectedSource),
+        destination: JSON.stringify(selectedDestination),
+      };
+    } else {  
+      endpoint = server + "with-elevation" 
+      let elevation = "" 
+      if (preference == "minimize-elevation"){ 
+        elevation = "min"
+      } else if (preference == "maximize-elevation"){ 
+        elevation = "max"
+      } else {
+        console.log("error with min/max elevation")
       }
-
-      // make a POST request to the server with the selected source and destination
-      fetch(URL, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(data),
-      })
-      .then(response => {
-        // handle the response from the server
-        console.log(response);
-      })
-      .catch(error => {
-        // handle any errors
-        console.error(error);
-      });
+      data = {
+        source: JSON.stringify(selectedSource),
+        destination: JSON.stringify(selectedDestination),
+        elevation: elevation
+        //TODO add % shortest path
+      };
     }
-  
+    postRequest(endpoint, data)
+  }
+
+  // make a POST request to the server with the selected source, destination, etc.
+  const postRequest = (endpoint, data) => {
+    fetch(endpoint, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(data),
+    })
+    .then(response => {
+      // handle the response from the server
+      console.log(response);
+    })
+    .catch(error => {
+      // handle any errors
+      console.error(error);
+    });
+  }
+
 
   const provider = new OpenStreetMapProvider();
 

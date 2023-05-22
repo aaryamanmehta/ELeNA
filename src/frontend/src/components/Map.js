@@ -3,6 +3,7 @@ import { MapContainer, TileLayer, Polyline, ZoomControl } from 'react-leaflet';
 import React, {useState, useEffect} from 'react';
 
 function Map({ sidebarOpen }) {
+
   const style = {
     position: "relative",
     width: sidebarOpen ? "75%" : "95%",

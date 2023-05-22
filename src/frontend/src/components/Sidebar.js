@@ -9,6 +9,13 @@ function Sidebar() {
   const [originColor, setOriginColor] = useState('white');
   const [destinationColor, setDestinationColor] = useState('white');
   const [elevationPreference, setElevationPreference] = useState('');
+
+  const provider = new OpenStreetMapProvider();
+
+  const [originOptions, setoriginOptions] = useState([]);
+  const [destinationOptions, setDestinationOptions] = useState([]);
+  let [selectedSource, setSelectedSource] = useState();
+  let [selectedDestination, setSelectedDestination] = useState();
   
   const handleElevationPreferenceClick = (preference) => {
     setElevationPreference(preference);
@@ -53,21 +60,13 @@ function Sidebar() {
     })
     .then(response => {
       // handle the response from the server
-      console.log(response);
+      console.log(response.json());
     })
     .catch(error => {
       // handle any errors
       console.error(error);
     });
   }
-
-
-  const provider = new OpenStreetMapProvider();
-
-  const [originOptions, setoriginOptions] = useState([]);
-  const [destinationOptions, setDestinationOptions] = useState([]);
-  let [selectedSource, setSelectedSource] = useState();
-  let [selectedDestination, setSelectedDestination] = useState();
 
 
   const dropdownStyle = {

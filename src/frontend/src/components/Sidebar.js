@@ -3,6 +3,7 @@ import Slider from './Slider'
 import { getCurrentValue } from './Slider';
 import { OpenStreetMapProvider } from 'leaflet-geosearch';
 import Select from 'react-select';
+import Map from './Map';
 
 function Sidebar() {
   const server = "http://localhost:8000/"
@@ -61,6 +62,7 @@ function Sidebar() {
     .then(response => {
       // handle the response from the server
       console.log(response.json());
+      // updatePath(response)
     })
     .catch(error => {
       // handle any errors

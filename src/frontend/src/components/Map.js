@@ -3,6 +3,11 @@ import { MapContainer, TileLayer, Polyline, ZoomControl } from 'react-leaflet';
 import React, {useState, useEffect} from 'react';
 
 function Map({ sidebarOpen }) {
+  // const [pathPoints, setPathPoints] = useState([]);
+
+  // const updatePath = (newPoints) => {
+  //   setPathPoints(newPoints)
+  // };
 
   const style = {
     position: "relative",

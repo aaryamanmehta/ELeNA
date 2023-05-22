@@ -14,6 +14,8 @@ def getElevationPath(source : str, dest : str, elevation : str):
     destination_coords = get_coordinates(dest)
  
     path = findshortestPathElevation(G, source_coords, destination_coords, elevation)
+    path = [[G.nodes[node_id]["y"], G.nodes[node_id]["x"]] for node_id in path] #get long and lat from node ids
+
 
     return path
     

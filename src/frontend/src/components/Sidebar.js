@@ -10,6 +10,7 @@ function Sidebar({ updatePoints}) {
   const [originColor, setOriginColor] = useState('white');
   const [destinationColor, setDestinationColor] = useState('white');
   const [elevationPreference, setElevationPreference] = useState('');
+  const [percentLength, setPercentLength] = useState(30);
   
   const provider = new OpenStreetMapProvider();
 
@@ -17,6 +18,12 @@ function Sidebar({ updatePoints}) {
   const [destinationOptions, setDestinationOptions] = useState([]);
   let [selectedSource, setSelectedSource] = useState();
   let [selectedDestination, setSelectedDestination] = useState();
+
+  const setPathPercent = (value) => {
+    console.log(value);
+    console.log(" of the Shortest Path");
+    setPercentLength(value)
+  };
   
   const handleElevationPreferenceClick = (preference) => {
     setElevationPreference(preference);
@@ -43,8 +50,8 @@ function Sidebar({ updatePoints}) {
       data = {
         source: JSON.stringify(selectedSource),
         destination: JSON.stringify(selectedDestination),
-        elevation: elevation
-        //TODO add % shortest path
+        elevation: elevation,
+        percent: percentLength
       };
     }
     postRequest(endpoint, data)
@@ -222,7 +229,7 @@ function Sidebar({ updatePoints}) {
           </button>
           <br></br>
           <br></br>
-          <Slider />
+          <Slider setPathPercent={setPathPercent}/>
       </div>
     );
   }

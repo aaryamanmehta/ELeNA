@@ -1,8 +1,8 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
-from controller.shortestPathMinMaxElevation import getElevationPath
-from controller.shortestPathNoElevation import get_shortest_path
+from Controller.shortestPathMinMaxElevation import getElevationPath
+from Controller.shortestPathNoElevation import get_shortest_path
 
 app = FastAPI()
 
@@ -14,6 +14,7 @@ class elevationLocationData(BaseModel):
     source: str
     destination: str
     elevation: str
+    percent: int
 
 origins = [
     "http://localhost",
@@ -42,6 +43,7 @@ async def shortest_route_no_elevation(data : LocationData):
 @app.post("/with-elevation")
 async def shortest_route_with_elevation(data : elevationLocationData):
     path = getElevationPath(data.source, data.destination, data.elevation )
+    print(data.percent)
     print(path)
     return {"path": path}
 

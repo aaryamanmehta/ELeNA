@@ -10,5 +10,4 @@ def get_shortest_path(source_request : str, destination_request : str):
     destination_coords = get_coordinates(destination_request)
     path = dijkstra(source_coords, destination_coords, graph)
     path = [[graph.nodes[node_id]["y"], graph.nodes[node_id]["x"]] for node_id in path]
-    path = [[graph.nodes[node_id]["y"], graph.nodes[node_id]["x"]] for node_id in path]
     return path

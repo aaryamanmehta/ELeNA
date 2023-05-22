@@ -5,12 +5,12 @@ import { OpenStreetMapProvider } from 'leaflet-geosearch';
 import Select from 'react-select';
 import Map from './Map';
 
-function Sidebar() {
+function Sidebar({ updatePoints}) {
   const server = "http://localhost:8000/"
   const [originColor, setOriginColor] = useState('white');
   const [destinationColor, setDestinationColor] = useState('white');
   const [elevationPreference, setElevationPreference] = useState('');
-
+  
   const provider = new OpenStreetMapProvider();
 
   const [originOptions, setoriginOptions] = useState([]);
@@ -59,17 +59,14 @@ function Sidebar() {
       },
       body: JSON.stringify(data),
     })
+    .then(response => response.json())
     .then(response => {
-      // handle the response from the server
-      console.log(response.json());
-      // updatePath(response)
+      updatePoints(response.path); // Call the updatePoints function from props
     })
     .catch(error => {
-      // handle any errors
       console.error(error);
     });
-  }
-
+  };
 
   const dropdownStyle = {
     option: (provided) => ({
@@ -229,5 +226,5 @@ function Sidebar() {
       </div>
     );
   }
-
+  
   export default Sidebar;

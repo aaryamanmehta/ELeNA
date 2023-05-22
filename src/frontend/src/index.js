@@ -4,12 +4,19 @@ import Map from './components/Map';
 import Sidebar from './components/Sidebar';
 import Header from './components/Header';
 import './index.css';
+import { point } from 'leaflet';
 
 const App = () => {
   const [sidebarOpen, setSidebarOpen] = useState(true);
+  const [points, setPoints] = useState([]); // State for storing the points
 
   const handleSidebarToggle = () => {
     setSidebarOpen(!sidebarOpen);
+  };
+
+  const updatePoints = (newPoints) => {
+    setPoints(newPoints);
+    console.log(newPoints);
   };
 
   return (
@@ -18,10 +25,8 @@ const App = () => {
         <Header />
       </div>
       <div className="map-container">
-        {sidebarOpen && (
-          <Sidebar />
-        )}
-        <Map sidebarOpen={sidebarOpen} />
+        {sidebarOpen && <Sidebar updatePoints={updatePoints} />} {/* Pass updatePoints as a prop */}
+        <Map sidebarOpen={sidebarOpen} pathPoints={points} /> {/* Pass points as a prop */}
         <button 
           className="sidebar-toggle-button"
           onClick={handleSidebarToggle}

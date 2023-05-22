@@ -18,6 +18,7 @@ class elevationLocationData(BaseModel):
 origins = [
     "http://localhost",
     "http://localhost:3000",
+    "http://localhost:3002",
 ]
 
 app.add_middleware(
@@ -35,10 +36,12 @@ async def read_root():
 @app.post("/no-elevation")
 async def shortest_route_no_elevation(data : LocationData):
     path = get_shortest_path(data.source, data.destination)
-    return path 
+    print(path)
+    return {"path": path}
 
 @app.post("/with-elevation")
 async def shortest_route_with_elevation(data : elevationLocationData):
-    path = getElevationPath(data.source, data.destination, data.elevation)
-    return path 
+    path = getElevationPath(data.source, data.destination, data.elevation )
+    print(path)
+    return {"path": path}
 

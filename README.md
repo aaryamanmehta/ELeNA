@@ -37,3 +37,12 @@ Alpha/Beta Testing: We collected back/bug reports on our product with friends/fa
 A/B (Split) Testing: During our beta phase, we will be collecting feedback on various versions of our UI using A/B testing. Some cases we used A/B test for were:
 sliding scale elevation input vs multiple choice
 display layout changes (i.e. full screen vs multiple displays) - decided on having a collapsable sidebar
+
+## Contributors
+
+According to the CS520 project requirements, our usernames as they pertain to our real names are:
+
+@AvadRaul20 - Rahul A
+@Aryan-Dang - Aryan D
+@vivjamba - Vivien J
+@aaryamanmehta - Aaryaman M

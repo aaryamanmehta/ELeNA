@@ -39,7 +39,6 @@ def findshortestPathElevation(G, source, dest, elevation, length_constraint = 0)
         cost_ele[Snode] = 0
         while len(queue) != 0:
             (val, cur) = heapq.heappop(queue)
-            print("hi")
             if cur == Dnode:
                 if cost[cur] <= pathLen:
                     break
@@ -52,11 +51,12 @@ def findshortestPathElevation(G, source, dest, elevation, length_constraint = 0)
                 if nxt not in cost or currCost < cost[nxt]:
                     cost[nxt] = currCost
                     cost_ele[nxt] = currCost_ele
-                    if elevation:
-                        print("here")
-                        priority = -currCost_ele
-                    else:
-                        priority = currCost_ele
+                    priority = currCost_ele
+                    #elevation consideration not working properly (maxElevation runs for an infinite loop)
+                    # if elevation:
+                    #     priority = -currCost_ele
+                    # else:
+                    #     priority = currCost_ele
                     heapq.heappush(queue, (priority, nxt))
                     revPath[nxt] = curr
             
@@ -71,13 +71,12 @@ def findshortestPathElevation(G, source, dest, elevation, length_constraint = 0)
             min_path = possible_paths[key]
         if key  >= length_constraint:
             max_path = possible_paths[key]
-            
-    print(min_path)
-    print(max_path)
-    if elevation:
-        path = max_path
-    else:
-        path = min_path
+
+    #elevation not working properly
+    # if elevation:
+    #     path = max_path
+    # else:
+    path = min_path
     
     return path
     

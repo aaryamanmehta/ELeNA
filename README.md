@@ -14,7 +14,9 @@ In the backend folder: run **uvicorn server:app --reload**
 ## List of features
 
 Using OpenStreetMap’s API for autocomplete functionality, the user would input the origin and destination addresses.
+
 The user has several options to choose from when calculating the route from the origin and the destination. They may select the shortest path with no elevation. The user may also input a percentage value of the shortest path, essentially an “offset” value, that they are willing to travel extra, and can select whether to maximize or minimize elevation. The route will be displayed depending on the user’s preferences.
+
 Using OpenStreetMap’s API, the user will be able to interact with the map, such as viewing the area surrounding the route, zooming in/out, panning, etc. 
 
 
@@ -30,19 +32,40 @@ In the backend folder: use pip or another app to install the following packages
   scikit-learn
   osmnx 
 
+Thank you to the developers of all of our inculded libraries and packages
 
 ## Evaluation 
+**Our main source of feedback was through modified-Likert-scale-style surveys using Google Surveys.**
 
-Alpha/Beta Testing: We collected back/bug reports on our product with friends/family in the alpha phase, and throughout campus in the beta phase. This will allow any issues or bugs to be identified and resolved before the final release. Given our priority on accessibility, Alpha/Beta testing can also be used to test the usability of the system. This will allow users to provide feedback on the system's ease of use, intuitive interface, and clear labels and icons. 
-A/B (Split) Testing: During our beta phase, we will be collecting feedback on various versions of our UI using A/B testing. Some cases we used A/B test for were:
-sliding scale elevation input vs multiple choice
-display layout changes (i.e. full screen vs multiple displays) - decided on having a collapsable sidebar
+**Alpha/Beta Testing: **
+We collected back/bug reports on our product with friends/family in the alpha phase, and throughout campus in the beta phase. This allowed functional issues and bugs to be identified. 
+
+Given our priority on UI and accessibility, Alpha/Beta testing was also used to test the usability of the system. This allowed to provide feedback on the system's ease of use, intuitive interface, and clear labels and icons. 
+
+**A/B (Split) Testing: **
+During our beta phase, we collected feedback on various versions of our UI using A/B testing. Some cases we used A/B test for were:
+
+Sliding scale input vs Multiple choice
+Our test users decided that having a sliding scale bar to input shortest path %  was the most intuitive
+
+Display layout changes (i.e. full screen vs multiple displays) 
+Our test users were conflicted on which they preferred, and many suggested we have a collapsable 
+sidebar, which we implemented in our latest version	
 
 ## Contributors
 
 According to the CS520 project requirements, our usernames as they pertain to our real names are:
 
 @AvadRaul20 - Rahul A
+
 @Aryan-Dang - Aryan D
+
 @vivjamba - Vivien J
+
 @aaryamanmehta - Aaryaman M
+
+## Bug Reports/Notes
+
+- We aim to optimize our autocomplete feature (the current library we use is slower than optimal) and implement use of a different autocomplete library
+- We aim to maximize-elevation make our functionality completely functional
+- We aim to make the map auto-center upon clicking a button

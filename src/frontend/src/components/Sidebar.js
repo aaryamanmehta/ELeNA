@@ -20,8 +20,6 @@ function Sidebar({ updatePoints}) {
   let [selectedDestination, setSelectedDestination] = useState();
 
   const setPathPercent = (value) => {
-    console.log(value);
-    console.log(" of the Shortest Path");
     setPercentLength(value)
   };
   

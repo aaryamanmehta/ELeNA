@@ -42,7 +42,7 @@ async def shortest_route_no_elevation(data : LocationData):
 
 @app.post("/with-elevation")
 async def shortest_route_with_elevation(data : elevationLocationData):
-    path = getElevationPath(data.source, data.destination, data.elevation)
+    path = getElevationPath(data.source, data.destination, data.elevation, data.percent)
 
     return {"path": path}
 

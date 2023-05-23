@@ -3,7 +3,7 @@ from DataMod.PathHelper import *
 from DataMod.ElevationDijkstra import *
 import osmnx as ox
 
-def getElevationPath(source : str, dest : str, elevation : str):
+def getElevationPath(source : str, dest : str, elevation : str, percentage : int):
     source_info = get_location(source)
     destination_info = get_location(dest)
     G = generate_graph(source_info, destination_info)
@@ -21,6 +21,6 @@ def getElevationPath(source : str, dest : str, elevation : str):
         elev = True
     elif elevation == "min":
         elev = False
-    path = findshortestPathElevation(G, source_coords, destination_coords, elev, pathLen)
+    path = findshortestPathElevation(G, source_coords, destination_coords, elev, pathLen, percentage)
     path = [[G.nodes[node_id]["y"], G.nodes[node_id]["x"]] for node_id in path]
     return path

@@ -13,9 +13,9 @@ import sys
 #     elevation_diff = min(0, G.nodes[dest]['elevation'] - G.nodes[source]['elevation'])
 #     return weight['length'] + elevation_diff
 
-def findshortestPathElevation(G, source, dest, elevation, length_constraint = 0):
+def findshortestPathElevation(G, source, dest, elevation, length_constraint = 0, percent = 0):
     path = []
-    percent = 34
+    percent = percent
     percent += 100
     possible_paths = {}
     floored_percent = (percent / 10.0) * 10.0
@@ -52,7 +52,7 @@ def findshortestPathElevation(G, source, dest, elevation, length_constraint = 0)
                     cost[nxt] = currCost
                     cost_ele[nxt] = currCost_ele
                     priority = currCost_ele
-                    #elevation consideration not working properly (maxElevation runs for an infinite loop)
+                    #elevation consideration not working properly (maxElevation runs for an infinite loop)(min Works fine)
                     # if elevation:
                     #     priority = -currCost_ele
                     # else:

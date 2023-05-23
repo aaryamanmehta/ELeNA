@@ -5,9 +5,11 @@ EleNa is a map-based web application that enables users to decide routes between
 
 The primary focus for this project is to implement an interactable, accessible UI for a valuable application, so as to provide the user with a pleasant, confusion-free experience when navigating the interface. In this case, the stakeholders in this project will be purely the clients using the web application as well as the software developers creating it. Examples of such clients include anyone who needs to plan a route based on elevation preferences, such as hikers, bikers, runners, or any outdoor enthusiasts. It could also be useful for urban planners or architects who need to consider elevation when designing routes or structures. Additionally, this software could be used by transportation companies or logistics companies who need to optimize their routes based on elevation preferences to save time and reduce costs.
 
-TO RUN THE APPLICATION (!! after installing dependencies -- see below !!)
+**TO RUN THE APPLICATION (!! after installing dependencies -- see below !!)**
+
 In the frontend folder: run **npm start** 
-In the backeend folder: run **uvicorn server:app --reload** 
+
+In the backend folder: run **uvicorn server:app --reload** 
 
 ## List of features
 

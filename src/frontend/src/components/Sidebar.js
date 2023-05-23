@@ -20,6 +20,7 @@ function Sidebar({ updatePoints}) {
   let [selectedDestination, setSelectedDestination] = useState();
   const [isOriginLoading, setIsOriginLoading] = useState(false);
   const [isDestLoading, setIsDestLoading] = useState(false);
+  const [isUnableToSubmit, setIsUnableToSubmit] = useState(true);
 
   const setPathPercent = (value) => {
     setPercentLength(value)
@@ -103,10 +104,27 @@ function Sidebar({ updatePoints}) {
 
   const handleOriginChange = (selectedOption) => {
     setSelectedSource(JSON.parse(JSON.stringify(selectedOption)));
+
+    try {
+      if (selectedDestination.label.length > 1)
+        setIsUnableToSubmit(false);
+    }
+    catch{
+      //dest field is empty
+      setIsUnableToSubmit(true);
+    }
   }
 
   const handleDestinationChange = (selectedOption) => {
     setSelectedDestination(JSON.parse(JSON.stringify(selectedOption)))
+    try {
+      if (selectedSource.label.length > 1)
+        setIsUnableToSubmit(false);
+    }
+    catch{
+      //other field is empty
+      setIsUnableToSubmit(true);
+    }
   }
 
   const handleDestinationAutocomplete = (selectedOption) => {
@@ -203,6 +221,7 @@ function Sidebar({ updatePoints}) {
               ...buttonStyle,
               backgroundColor: elevationPreference === 'no-elevation' ? '#F4EEE0' : 'white'
             }}
+            disabled={isUnableToSubmit}
             onClick={() => handleElevationPreferenceClick('no-elevation')}
           > 
             <a>No Elevation</a>
@@ -216,6 +235,7 @@ function Sidebar({ updatePoints}) {
               marginRight: '2%',
               backgroundColor: elevationPreference === 'maximize-elevation' ? '#F4EEE0' : 'white'
             }}
+            disabled={isUnableToSubmit}
             onClick={() => handleElevationPreferenceClick('maximize-elevation')}    
           > 
             <a>Maximize Elevation</a>
@@ -227,6 +247,7 @@ function Sidebar({ updatePoints}) {
               width: '46%',
               backgroundColor: elevationPreference === 'minimize-elevation' ? '#F4EEE0' : 'white'
             }}
+            disabled={isUnableToSubmit}
             onClick={() => handleElevationPreferenceClick('minimize-elevation')}
           > 
             <a>Minimize Elevation</a>

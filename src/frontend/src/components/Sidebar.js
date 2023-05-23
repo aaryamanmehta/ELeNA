@@ -18,6 +18,8 @@ function Sidebar({ updatePoints}) {
   const [destinationOptions, setDestinationOptions] = useState([]);
   let [selectedSource, setSelectedSource] = useState();
   let [selectedDestination, setSelectedDestination] = useState();
+  const [isOriginLoading, setIsOriginLoading] = useState(false);
+  const [isDestLoading, setIsDestLoading] = useState(false);
 
   const setPathPercent = (value) => {
     setPercentLength(value)
@@ -82,6 +84,7 @@ function Sidebar({ updatePoints}) {
   };
 
   const handleOriginAutocomplete = (selectedOption) => {
+    setIsOriginLoading(true);
     provider.search({ query: selectedOption })
       .then((results) => {
         const newOptions = []
@@ -89,10 +92,12 @@ function Sidebar({ updatePoints}) {
           newOptions.push({ value: results[i], label: results[i].label })
         }
         setoriginOptions(newOptions)
+        setIsOriginLoading(false); // Set loading state to false after API call completes
 
       })
       .catch((error) => {
         console.log('An error occurred:', error);
+        setIsOriginLoading(false); // Set loading state to false after API call fails
       });
   };
 
@@ -105,6 +110,7 @@ function Sidebar({ updatePoints}) {
   }
 
   const handleDestinationAutocomplete = (selectedOption) => {
+    setIsDestLoading(true);
     provider.search({ query: selectedOption })
       .then((results) => {
         const newOptions = []
@@ -112,10 +118,12 @@ function Sidebar({ updatePoints}) {
           newOptions.push({ value: results[i], label: results[i].label })
         }
         setDestinationOptions(newOptions)
+        setIsDestLoading(false); // Set loading state to false after API call completes
 
       })
       .catch((error) => {
         console.log('An error occurred:', error);
+        setIsDestLoading(false); // Set loading state to false after API call fails
       });
   };
 
@@ -167,8 +175,7 @@ function Sidebar({ updatePoints}) {
               placeholder="Enter origin"
               options={originOptions}
               styles={dropdownStyle}
-              loadingMessage={() => "Loading"} 
-              noOptionsMessage={() => ""} 
+              noOptionsMessage={() => (isOriginLoading ? "Loading..." : "")}
               onInputChange={handleOriginAutocomplete}
               onChange={handleOriginChange}
             />
@@ -181,8 +188,7 @@ function Sidebar({ updatePoints}) {
               name="Destination"
               placeholder="Enter destination"
               options={destinationOptions}
-              loadingMessage={() => "Loading"} 
-              noOptionsMessage={() => ""} 
+              noOptionsMessage={() => (isDestLoading ? "Loading..." : "")}
               styles={dropdownStyle}
               onInputChange={handleDestinationAutocomplete}
               onChange={handleDestinationChange}
